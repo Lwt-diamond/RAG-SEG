@@ -1,0 +1,13 @@
+torch
+transformers
+gradio
+numpy
+Pillow
+scikit-learn
+faiss-gpu
+torchvision
+opencv-python
+pillow
+matplotlib
+tqdm
+git+https://github.com/facebookresearch/segment-anything-2.git
