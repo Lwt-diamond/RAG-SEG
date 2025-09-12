@@ -66,5 +66,7 @@ If you find this work useful, please cite:
 
 ## 📌 License
 
-This repository is released under the MIT License.
+This project is released for **non-commercial use only**.  
+For commercial licensing, please contact [wutaoliu@nuaa.edu.cn].
+
 
