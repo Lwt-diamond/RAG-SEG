@@ -61,9 +61,8 @@ If you find this work useful, please cite:
   journal={arXiv preprint arXiv:2508.15313},
   year={2025}
 }
+```
 
-
----
 
 ## 📌 License
 
