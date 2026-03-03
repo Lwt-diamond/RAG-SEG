@@ -90,6 +90,14 @@ For online demo, visit: [RAG-SEG HuggingFace Space](https://huggingface.co/space
 ⚠️ 建议在 本地运行 本项目，因为在 HuggingFace Space 上由于网络和 CPU 限制，推理速度可能较慢。
 ---
 
+### 📱 Android Implementation Details
+This APK demonstrates the on-device inference capability of the RAG-SEG paradigm.
+
+- **Development Flow**: Built using Native Android framework via **AI-assisted coding (Vibe Coding)**.
+- **Core Features**: 
+  - Integrated DINOv2-small for feature extraction.
+  - On-device vector search and SAM2/EdgeTAM-based refinement.
+---
 ## 📖 Citation
 
 If you find this work useful, please cite:
