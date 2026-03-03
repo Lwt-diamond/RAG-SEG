@@ -15,6 +15,46 @@
 
 ---
 
+## ⚙️ Core Philosophy & Pipeline
+
+### Paradigm Shift: Fine-tuning vs. RAG-SEG
+Traditional methods rely on heavy architectural adapters or full-parameter fine-tuning. **RAG-SEG** shifts the complexity from *parameter learning* to *knowledge retrieval*, maintaining a lightweight and deployable footprint.
+
+
+<p align="center">
+  <img src="./assets/pipeline_compare_v1_seg-1.jpg" width="700">
+</p>
+
+### System Architecture
+The framework consists of two distinct stages:
+
+1.  **Stage 1: First RAG (Retrieval-Augmented Generation)**: A frozen **DINOv2** backbone extracts global and local tokens from the query image. These tokens are matched against a pre-built **FAISS** vector database to generate an initial coarse mask.
+2.  **Stage 2: Second SEG (Segmentation Refinement)**: The coarse mask is processed into sparse visual prompts (key foreground/background points). These prompts guide **SAM2** to refine boundaries and produce the final high-precision segmentation.
+<p align="center">
+  <img src="./assets/pipeline_overview_v1_seg-1.jpg" width="700">
+</p>
+## 📊 Performance Benchmarks
+
+### 1. Quantitative Evaluation on COD
+RAG-SEG dominates the training-free category and rivals several supervised methods.
+
+| Category | Method | CAMO (Sα ↑) | COD10K (Sα ↑) | NC4K (Sα ↑) |
+| :------- | :----- | :----------: | :------------: | :----------: |
+| **Training-based** | SINetv2 | 0.820 | 0.815 | 0.847 |
+| | MDSAM | 0.852 | 0.862 | 0.875 |
+| **Training-free** | SAM | 0.684 | 0.783 | 0.767 |
+| | ProMaC | 0.767 | 0.805 | - |
+| | **RAG-SEG (Ours)** | **0.831** | **0.854** | **0.882** |
+
+### 2. Generalization to SOD
+RAG-SEG demonstrates strong zero-shot transferability to Salient Object Detection tasks.
+
+| Dataset | Metric | MDSAM (Training-based) | **RAG-SEG (Training-free)** |
+| :------ | :----- | :--------------------: | :---------------------------: |
+| **PASCAL S** | Eξ ↑ | 0.917 | **0.927** |
+| **ECSSD** | Sα ↑ | 0.948 | 0.927 |
+| **HKU IS** | Fβω ↑ | 0.935 | 0.918 |
+
 ## ⚙️ Installation
 ```bash
 # Create environment
@@ -36,13 +76,13 @@ python app.py
 **Segmentation results:**
 
 <p align="center">
-  <img src="./demo_images/all_seg.png" width="700">
+  <img src="./assets/all_seg.png" width="700">
 </p>
 
 **Demo running example:**
 
 <p align="center">
-  <img src="./demo_images/Snipaste_2025-09-10_15-18-34.png" width="700">
+  <img src="./assets/Snipaste_2025-09-10_15-18-34.png" width="700">
 </p>
 
 For online demo, visit: [RAG-SEG HuggingFace Space](https://huggingface.co/spaces/Sherry4869/RAG-SEG)
@@ -68,5 +108,3 @@ If you find this work useful, please cite:
 
 This project is released for **non-commercial use only**.  
 For commercial licensing, please contact [wutaoliu@nuaa.edu.cn].
-
-
